@@ -3,11 +3,15 @@ import './App.css';
 import PropertyCard from './PropertyCard';
 
 function Owned({ properties }) {
-    
+    const propertyRender = properties.map (property => {
+        return (
+            <PropertyCard property={property} key={property.id}/>
+        )
+    })
 
     return (
         <div>
-            <h1>Owned</h1>
+            {propertyRender}
         </div>
     )
 }
