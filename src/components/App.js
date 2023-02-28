@@ -16,7 +16,6 @@ function App() {
       setProperties(data);
     })}, [])
 
-
   return (
     <div>
         <Header />
@@ -28,7 +27,7 @@ function App() {
               <Owned properties={properties.filter(t => t.purchase_price !== null)}/>
             </Route>
             <Route exact path="/pending">
-              <Pending/>
+              <Pending properties={properties.filter(t => t.purchase_price === null)}/>
             </Route>
         </Switch>
     </div>
