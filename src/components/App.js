@@ -7,6 +7,15 @@ import Owned from './Owned';
 import Pending from './Pending';
 
 function App() {
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:9292/properties")
+    .then(r => r.json())
+    .then(data => {
+      setProperties(data);
+    })}, [])
+
   return (
     <div>
         <Header />
