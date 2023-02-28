@@ -9,3 +9,9 @@ body {
   text-align: center;
   font-size: 125%;
 }
+
+.PropertyCardImg {
+  max-width: fit-content;
+  max-height: fit-content;
+  text-align: center;
+}
