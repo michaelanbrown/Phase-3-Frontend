@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from "react"
+// import React, { useEffect, useState } from "react"
 import { Switch, Route } from "react-router-dom";
 import Header from "./Header"
 import Properties from "./Properties"
