@@ -3,6 +3,8 @@ import './App.css';
 import { Switch, Route } from "react-router-dom";
 import Header from "./Header"
 import Home from "./Home"
+import Properties from './Properties';
+import Records from './Records';
 
 function App() {
   return (
@@ -10,7 +12,13 @@ function App() {
         <Header />
         <Switch>
             <Route exact path="/">
-                <Home/>
+              <Home/>
+            </Route>
+            <Route exact path="/properties">
+              <Properties/>
+            </Route>
+            <Route exact path="/records">
+              <Records/>
             </Route>
         </Switch>
     </div>
