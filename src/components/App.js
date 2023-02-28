@@ -1,9 +1,9 @@
 import './App.css';
-// import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Switch, Route } from "react-router-dom";
 import Header from "./Header"
 import Home from "./Home"
-import Properties from './Properties';
+import Owned from './Owned';
 import Records from './Records';
 
 function App() {
@@ -14,8 +14,8 @@ function App() {
             <Route exact path="/">
               <Home/>
             </Route>
-            <Route exact path="/properties">
-              <Properties/>
+            <Route exact path="/owned">
+              <Owned/>
             </Route>
             <Route exact path="/records">
               <Records/>

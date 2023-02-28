@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 
-function Properties() {
+function Owned() {
     
 
     return (
         <div>
-            <h1>Properties</h1>
+            <h1>Owned</h1>
         </div>
     )
 }
 
-export default Properties;
+export default Owned;
