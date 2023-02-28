@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-function Properties() {
+function Home() {
     
 
     return (
@@ -11,4 +11,4 @@ function Properties() {
     )
 }
 
-export default Properties;
+export default Home;
