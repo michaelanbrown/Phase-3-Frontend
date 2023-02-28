@@ -16,6 +16,7 @@ function App() {
       setProperties(data);
     })}, [])
 
+
   return (
     <div>
         <Header />
@@ -24,7 +25,7 @@ function App() {
               <Home/>
             </Route>
             <Route exact path="/owned">
-              <Owned/>
+              <Owned properties={properties.filter(t => t.purchase_price !== null)}/>
             </Route>
             <Route exact path="/pending">
               <Pending/>
