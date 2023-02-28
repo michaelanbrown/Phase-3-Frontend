@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Header from "./Header"
 import Home from "./Home"
 import Owned from './Owned';
-import Records from './Records';
+import Pending from './Pending';
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
             <Route exact path="/owned">
               <Owned/>
             </Route>
-            <Route exact path="/records">
-              <Records/>
+            <Route exact path="/pending">
+              <Pending/>
             </Route>
         </Switch>
     </div>

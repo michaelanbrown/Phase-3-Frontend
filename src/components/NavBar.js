@@ -11,7 +11,7 @@ export default function NavBar ()  {
             <br></br>
             <NavLink exact to="/owned" activeStyle={{color: 'blue'}} style={{color: 'black'}}>Owned</NavLink>
             <br></br>
-            <NavLink exact to="/records" activeStyle={{color: 'blue'}} style={{color: 'black'}}>Property Records</NavLink>
+            <NavLink exact to="/pending" activeStyle={{color: 'blue'}} style={{color: 'black'}}>Pending</NavLink>
         </nav>
     )
 }

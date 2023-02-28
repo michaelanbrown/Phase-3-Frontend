@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 
-function Records() {
+function Pending() {
     
 
     return (
         <div>
-            <h1>Records</h1>    
+            <h1>Pending</h1>    
         </div>
     )
 }
 
-export default Records;
+export default Pending;
