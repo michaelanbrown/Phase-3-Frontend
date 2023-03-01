@@ -6,11 +6,13 @@ function PropertyCard({ property }) {
     const propertyURL = `/properties/${property.id}`
 
     return (
-        <div>
+        <div className="PropertyClass">
             <br></br>
             <img className = "PropertyCardImg" src={property.link} alt={property.address} width="75%" height="75%"/>
-            <p>{property.city}<br></br>{property.state}</p>
-            <NavLink exact to={propertyURL} activeStyle={{color: 'blue'}} style={{color: 'black'}}>Owned</NavLink>
+            <p>
+                {property.city}<br></br>{property.state}<br></br>
+                <NavLink exact to={propertyURL} activeStyle={{color: 'blue'}} style={{color: 'black'}}>Owned</NavLink>
+            </p>
         </div>
     )
 }
