@@ -33,9 +33,6 @@ function App() {
             <Route path="/owned/:id">
               <Property properties={properties}/>
             </Route>
-            <Route path="/owned/:id">
-              <Property properties={properties}/>
-            </Route>
             <Route path="/pending/:id">
               <Property properties={properties}/>
             </Route>
