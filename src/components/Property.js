@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 
-function Property({ properties }) {
+function Property({ property }) {
 
     return (
         <div>
-            <h1>Hello</h1>  
+            <h1>hello</h1>  
         </div>
     )
 }

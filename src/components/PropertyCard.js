@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import './App.css';
+import Property from './Property';
 
 function PropertyCard({ property }) {
     const propertyURL = property.purchase_price ? `/owned/${property.id}` : `/pending/${property.id}`
+    const match = property.purchase_price ? '/owned' : '/pending'
     const purchasePrice = property.purchase_price ? `$${property.purchase_price}` : "Pending Purchase"
     const garageSpaces = property.garage_spaces ? `${property.garage_spaces} garage spaces` : "No garage"
 
@@ -27,6 +29,9 @@ function PropertyCard({ property }) {
                 {property.type.property_type}
                 <br/>
                 <Link to={propertyURL}>View Details</Link>
+                <Route path={`${match}/:id`}>
+                    <Property property={property}/>
+                </Route>
             </p>
         </div>
     )
