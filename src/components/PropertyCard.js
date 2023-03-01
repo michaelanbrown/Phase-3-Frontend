@@ -1,9 +1,9 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './App.css';
 
 function PropertyCard({ property }) {
-    const propertyURL = `/properties/${property.id}`
+    const propertyURL = property.purchase_price ? `/owned/${property.id}` : `/pending/${property.id}`
     const purchasePrice = property.purchase_price ? `$${property.purchase_price}` : "Pending Purchase"
     const garageSpaces = property.garage_spaces ? `${property.garage_spaces} garage spaces` : "No garage"
 
@@ -26,7 +26,7 @@ function PropertyCard({ property }) {
                 <br/>
                 {property.type.property_type}
                 <br/>
-                <NavLink exact to={propertyURL} activeStyle={{color: 'blue'}} style={{color: 'black'}}>View Details</NavLink>
+                <Link to={propertyURL}>View Details</Link>
             </p>
         </div>
     )

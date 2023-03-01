@@ -30,8 +30,14 @@ function App() {
             <Route exact path="/pending">
               <Pending properties={properties.filter(t => t.purchase_price === null)}/>
             </Route>
-            <Route path="/properties/:id">
-              <Property/>
+            <Route path="/owned/:id">
+              <Property properties={properties}/>
+            </Route>
+            <Route path="/owned/:id">
+              <Property properties={properties}/>
+            </Route>
+            <Route path="/pending/:id">
+              <Property properties={properties}/>
             </Route>
         </Switch>
     </div>
