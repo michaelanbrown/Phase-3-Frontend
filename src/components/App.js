@@ -5,6 +5,7 @@ import Header from "./Header"
 import Home from "./Home"
 import Owned from './Owned';
 import Pending from './Pending';
+import Property from './Property';
 
 function App() {
   const [properties, setProperties] = useState([]);
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route exact path="/pending">
               <Pending properties={properties.filter(t => t.purchase_price === null)}/>
+            </Route>
+            <Route path="/properties/:id">
+              <Property/>
             </Route>
         </Switch>
     </div>

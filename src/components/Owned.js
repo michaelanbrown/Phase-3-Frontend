@@ -8,6 +8,7 @@ function Owned({ properties }) {
             <PropertyCard property={property} key={property.id}/>
         )
     })
+    console.log(properties)
 
     return (
         <div>
