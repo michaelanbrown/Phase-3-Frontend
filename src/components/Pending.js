@@ -3,11 +3,15 @@ import './App.css';
 import PropertyCard from './PropertyCard';
 
 function Pending({ properties }) {
-    
+    const propertyRender = properties.map (property => {
+        return (
+            <PropertyCard property={property} key={property.id}/>
+        )
+    })
 
     return (
         <div>
-            <h1>Pending</h1>    
+            {propertyRender}
         </div>
     )
 }

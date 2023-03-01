@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import './App.css';
 
 function PropertyCard({ property }) {
-    const propertyURL = `localhost:9292/properties/${property.id}`
+    const propertyURL = `/properties/${property.id}`
 
     return (
         <div>
             <br></br>
             <img className = "PropertyCardImg" src={property.link} alt={property.address} width="75%" height="75%"/>
             <p>{property.city}<br></br>{property.state}</p>
-            <Link href={propertyURL}>View More</Link>
+            <NavLink exact to={propertyURL} activeStyle={{color: 'blue'}} style={{color: 'black'}}>Owned</NavLink>
         </div>
     )
 }
