@@ -41,6 +41,7 @@ function Property() {
             <br/>
             <h3>Finance Records:</h3>
             {mappedRecords}
+            <br/>
             <NewRecordForm/>
         </div>
     )

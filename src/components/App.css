@@ -50,3 +50,28 @@ body {
 #ptag{
   margin-top: 0
 }
+
+#recordHeader{
+  font-weight: bold;
+  font-size: 105%;
+  margin-bottom: 0;
+}
+
+#property {
+  font-size: 100%
+}
+#occupancy {
+  font-size: 100%
+}
+#grossIncome {
+  font-size: 100%
+}
+#mortgage {
+  font-size: 100%
+}
+#hoa {
+  font-size: 100%
+}
+#propertyManagement {
+  font-size: 100%
+}
