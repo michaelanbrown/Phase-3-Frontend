@@ -22,8 +22,8 @@ function App() {
         <Header />
         <Routes>
             <Route path="/" element={<Home/>} />
-            <Route path="/owned" element={<Owned properties={properties.filter(t => t.purchase_price !== null)}/>} />
-            <Route path="/pending" element={<Pending properties={properties.filter(t => t.purchase_price === null)}/>} />
+            <Route path="/owned/*" element={<Owned properties={properties.filter(t => t.purchase_price !== null)}/>} />
+            <Route path="/pending/*" element={<Pending properties={properties.filter(t => t.purchase_price === null)}/>} />
             <Route path="/owned/:id" element={<Property properties={properties}/>} />
             <Route path="/pending/:id" element={<Property properties={properties}/>} />
         </Routes>
