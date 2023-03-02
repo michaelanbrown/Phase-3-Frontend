@@ -30,7 +30,7 @@ function PropertyCard({ property }) {
                 <br/>
                 <Link to={propertyURL}>View Details</Link>
                 <Routes>
-                    <Route path={`${match}/*`} element={<Property property={property}/>} />
+                    <Route path={`${match}/*`} element={<Property/>} />
                 </Routes>
             </p>
         </div>
