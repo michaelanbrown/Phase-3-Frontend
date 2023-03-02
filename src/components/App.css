@@ -30,3 +30,15 @@ body {
   max-height: 75%;
   text-align: center;
 }
+
+.recordBody {
+  background-color:rgba(112, 90, 164, 0.402);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 0px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 125%;
+}
