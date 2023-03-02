@@ -6,6 +6,7 @@ function Property() {
     const [propertyData, setPropertyData] = useState([])
     const { id } = useParams();
     const purchasePrice = propertyData.purchase_price ? `$${propertyData.purchase_price}` : "Pending Purchase"
+    const garageSpaces = propertyData.garage_spaces ? `${propertyData.garage_spaces} garage spaces` : "No garage"
 
     useEffect(() => {
         fetch(`http://localhost:9292/properties/${id}`)
@@ -13,7 +14,6 @@ function Property() {
         .then(data => {
             setPropertyData(data);
         })}, [])
-        console.log(propertyData)
 
     return (
         <div>
@@ -21,9 +21,13 @@ function Property() {
             <p>{propertyData.city}, {propertyData.state}</p>
             <img className = "PropertyImg" src={propertyData.link} alt={propertyData.address} width="75%" height="75%"/> 
             <br/>
-            {purchasePrice}
+            Purchase Price: {purchasePrice}
             <br/>
-            {propertyData.type ? propertyData.type.property_type : null}
+            Square feet: {propertyData.square_feet}
+            <br/>
+            Garage Spaces: {garageSpaces}
+            <br/>
+            Property Type: {propertyData.type ? propertyData.type.property_type : null}
         </div>
     )
 }
