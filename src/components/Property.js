@@ -13,11 +13,11 @@ function Property({  }) {
             setPropertyData(data);
         })}, [])
 
-        console.log(propertyData)
-
     return (
         <div>
-            <h1>hello</h1>  
+            <h1>{propertyData.street_address}</h1> 
+            <p>{propertyData.city}, {propertyData.state}</p>
+            <img className = "PropertyImg" src={propertyData.link} alt={propertyData.address} width="75%" height="75%"/> 
         </div>
     )
 }

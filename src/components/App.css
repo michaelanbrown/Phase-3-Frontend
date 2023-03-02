@@ -24,3 +24,9 @@ body {
   display: inline-block;
   text-align: center;
 }
+
+.PropertyImg {
+  max-width: 75%;
+  max-height: 75%;
+  text-align: center;
+}
