@@ -7,11 +7,11 @@ export default function NavBar ()  {
 
     return (
         <nav className="NavBar">
-            <NavLink exact to="/" activeStyle={{color: 'blue'}} style={{color: 'black'}}>Welcome</NavLink>
+            <NavLink to="/">Welcome</NavLink>
             <br></br>
-            <NavLink exact to="/owned" activeStyle={{color: 'blue'}} style={{color: 'black'}}>Owned</NavLink>
+            <NavLink to="/owned">Owned</NavLink>
             <br></br>
-            <NavLink exact to="/pending" activeStyle={{color: 'blue'}} style={{color: 'black'}}>Pending</NavLink>
+            <NavLink to="/pending">Pending</NavLink>
         </nav>
     )
 }

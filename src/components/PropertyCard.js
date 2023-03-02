@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import './App.css';
 import Property from './Property';
 
@@ -29,9 +29,9 @@ function PropertyCard({ property }) {
                 {property.type.property_type}
                 <br/>
                 <Link to={propertyURL}>View Details</Link>
-                <Route path={`${match}/:id`}>
-                    <Property property={property}/>
-                </Route>
+                <Routes>
+                    <Route path={`${match}/*`} element={<Property property={property}/>} />
+                </Routes>
             </p>
         </div>
     )
