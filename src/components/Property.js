@@ -23,8 +23,9 @@ function Property() {
 
     return (
         <div>
-            <h1>{propertyData.street_address}</h1> 
-            <p>{propertyData.city}, {propertyData.state}</p>
+            <br/>
+            <h2 id='h2tag'>{propertyData.street_address}</h2> 
+            <p id='ptag'>{propertyData.city}, {propertyData.state}</p>
             <img className = "PropertyImg" src={propertyData.link} alt={propertyData.address} width="75%" height="75%"/> 
             <br/>
             Purchase Price: {purchasePrice}
@@ -35,6 +36,9 @@ function Property() {
             <br/>
             Property Type: {propertyData.type ? propertyData.type.property_type : null}
             <br/>
+            <br/>
+            <br/>
+            <h3>Finance Records:</h3>
             {mappedRecords}
         </div>
     )

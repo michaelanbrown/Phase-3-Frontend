@@ -40,5 +40,13 @@ body {
   border-radius: 0px;
   margin-bottom: 20px;
   text-align: center;
-  font-size: 125%;
+  font-size: 110%;
+}
+
+#h2tag {
+  margin-bottom: 0
+}
+
+#ptag{
+  margin-top: 0
 }
