@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { useParams } from 'react-router-dom';
 import RecordCard from './RecordCard';
+import NewRecordForm from './NewRecordForm';
 
 function Property() {
     const [propertyData, setPropertyData] = useState([])
@@ -40,6 +41,7 @@ function Property() {
             <br/>
             <h3>Finance Records:</h3>
             {mappedRecords}
+            <NewRecordForm/>
         </div>
     )
 }
