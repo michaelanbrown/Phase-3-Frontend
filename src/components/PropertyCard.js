@@ -10,11 +10,12 @@ function PropertyCard({ property }) {
     const garageSpaces = property.garage_spaces ? `${property.garage_spaces} garage spaces` : "No garage"
 
     function handlePropertyDelete() {
-        fetch(`localhost:9292/${property.id}`, {
+        fetch(`http://localhost:9292/properties/${property.id}`, {
         method: "DELETE",
         })
         .then(r => r.json())
     }
+
 
     return (
         <div className="PropertyClass">

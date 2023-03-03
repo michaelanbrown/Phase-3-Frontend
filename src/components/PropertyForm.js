@@ -13,13 +13,21 @@ function PropertyForm() {
         garage_spaces: "",
         link: "",
         flip_status: "",
-        property_type: ""
+        type: ""
     });
 
     function handleFormChange(e) {
         setFormData({
             ...formData,
             [e.target.id] : e.target.value
+        });
+    }
+
+    function handleTypechange(e) {
+        setFormData({
+            ...formData,
+            [e.target.id] : document.getElementById('type').value
+
         });
     }
 
@@ -56,8 +64,13 @@ function PropertyForm() {
                 <br/>
                 <input type="text" className="propertyFormElement" id="flip_status" value={formData.flip_status} onChange={handleFormChange} placeholder="Flip Status"/>
                 <br/>
-                <input type="text" className="propertyFormElement" id="property_type" value={formData.property_type} onChange={handleFormChange} placeholder="Property Type"/>
-                <br/>
+                <select className="propertyFormElement" id="type" name="type" defaultValue="Single Family" onChange={handleFormChange}>
+                    <option value="Single Family" key="SingleFamily">Single Family</option>
+                    <option value="Condo/Townhouse" key="CondoTownhouse">Condo/Townhouse</option>
+                    <option value="Multifamily" key="Multifamily">Multifamily</option>
+                    <option value="Apartment Building" key="Apartment">Apartment Building</option>
+                    <option value="Commercial/Business" key="CommercialBusiness">Commercial/Business</option>
+                </select>
                 <br/>
                 <button className='submit'>Submit</button>
             </form>
