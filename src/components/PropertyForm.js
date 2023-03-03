@@ -24,25 +24,25 @@ function PropertyForm() {
     return (
         <div>
             <form>
-                <p id='recordHeader'>Enter a new Property:</p>
+                <p id='propertyRecordHeader'>Enter a new Property:</p>
                 <br/>
-                <input type="text" className="formElement" id="streetAddress" value={formData.streetAddress} onChange={handleFormChange} placeholder="Property Street Address"/>
+                <input type="text" className="propertyFormElement" id="streetAddress" value={formData.streetAddress} onChange={handleFormChange} placeholder="Property Street Address"/>
                 <br/>
-                <input type="text" className="formElement" id="city" value={formData.city} onChange={handleFormChange} placeholder="City"/>
+                <input type="text" className="propertyFormElement" id="city" value={formData.city} onChange={handleFormChange} placeholder="City"/>
                 <br/>
-                <input type="text" className="formElement" id="state" value={formData.state} onChange={handleFormChange} placeholder="State"/>
+                <input type="text" className="propertyFormElement" id="state" value={formData.state} onChange={handleFormChange} placeholder="State"/>
                 <br/>
-                <input type="text" className="formElement" id="purchasePrice" value={formData.purchasePrice} onChange={handleFormChange} placeholder="Purchase Price (if Applicable)"/>
+                <input type="text" className="propertyFormElement" id="purchasePrice" value={formData.purchasePrice} onChange={handleFormChange} placeholder="Purchase Price (if Applicable)"/>
                 <br/>
-                <input type="text" className="formElement" id="sqft" value={formData.sqft} onChange={handleFormChange} placeholder="Square feet"/>
+                <input type="text" className="propertyFormElement" id="sqft" value={formData.sqft} onChange={handleFormChange} placeholder="Square feet"/>
                 <br/>
-                <input type="text" className="formElement" id="garage" value={formData.garage} onChange={handleFormChange} placeholder="Garage Spaces"/>
+                <input type="text" className="propertyFormElement" id="garage" value={formData.garage} onChange={handleFormChange} placeholder="Garage Spaces"/>
                 <br/>
-                <input type="text" className="formElement" id="link" value={formData.link} onChange={handleFormChange} placeholder="Image URL"/>
+                <input type="text" className="propertyFormElement" id="link" value={formData.link} onChange={handleFormChange} placeholder="Image URL"/>
                 <br/>
-                <input type="text" className="formElement" id="type" value={formData.type} onChange={handleFormChange} placeholder="Property Type"/>
+                <input type="text" className="propertyFormElement" id="type" value={formData.type} onChange={handleFormChange} placeholder="Property Type"/>
                 <br/>
-                <input type="text" className="formElement" id="flipStatus" value={formData.flipStatus} onChange={handleFormChange} placeholder="Flip Status"/>
+                <input type="text" className="propertyFormElement" id="flipStatus" value={formData.flipStatus} onChange={handleFormChange} placeholder="Flip Status"/>
                 <br/>
                 <button className='submit'>Submit</button>
             </form>

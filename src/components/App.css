@@ -65,6 +65,21 @@ body {
   cursor: pointer;
 }
 
-.formElement{
+.recordFormElement{
   font-size: 100%
+}
+
+.propertyFormElement{
+  font-size: 100%;
+  width: 75%;
+  margin: 5px;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+#propertyRecordHeader{
+  font-size: 150%;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 35px;
 }
