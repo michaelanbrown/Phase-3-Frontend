@@ -51,7 +51,10 @@ function NewRecordForm() {
                 <br/>
                 <input type="text" className="recordFormElement" id="grossIncome" value={formData.grossIncome} onChange={handleFormChange} placeholder="Gross Income"/>
                 <br/>
-                <input type="text" className="recordFormElement" id="occupancy" value={formData.occupancy} onChange={handleFormChange} placeholder="Gross Income"/>
+                <select id="recordFormSelect" name="type" defaultValue="True" onChange={handleFormChange}>
+                    <option value="True" key="True">True</option>
+                    <option value="False" key="False">False</option>
+                </select>
                 <br/>
                 <button className='submit'>Submit</button>
             </form>
