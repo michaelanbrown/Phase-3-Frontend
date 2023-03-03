@@ -21,9 +21,29 @@ function PropertyForm() {
         });
     }
 
+    function handleNewProperty(newProperty) {
+        fetch("http://localhost:9292/properties", {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                street_address: newProperty.mortgagePayment,
+                city: newProperty.city,
+                state: newProperty.state,
+                purchase_price: newProperty.purchasePrice,
+                square_feet: newProperty.sqft,
+                garage_spaces: newProperty.garage,
+                link: newProperty.link,
+                type: newProperty.type,
+                flip_status: newProperty.flipStatus
+            }),
+        }).then(r => r.json())
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleNewProperty}>
                 <p id='propertyRecordHeader'>Enter a new Property:</p>
                 <br/>
                 <input type="text" className="propertyFormElement" id="streetAddress" value={formData.streetAddress} onChange={handleFormChange} placeholder="Property Street Address"/>

@@ -38,7 +38,7 @@ function NewRecordForm() {
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleNewRecord}>
                 <p id='recordHeader'>Enter a new Finance Record:</p>
                 <br/>
                 <input type="text" className="recordFormElement" id="property" value={formData.property} onChange={handleFormChange} placeholder="Property Street Address"/>
