@@ -5,15 +5,15 @@ import './App.css';
 function PropertyForm() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        streetAddress: "",
+        street_address: "",
         city: "",
         state: "",
-        purchasePrice: "",
-        sqft: "",
-        garage: "",
+        purchase_price: "",
+        square_feet: "",
+        garage_spaces: "",
         link: "",
-        type: "",
-        flipStatus: ""
+        flip_status: "",
+        property_type: ""
     });
 
     function handleFormChange(e) {
@@ -23,23 +23,14 @@ function PropertyForm() {
         });
     }
 
-    function handleNewProperty(newProperty) {
+    function handleNewProperty(e) {
+        e.preventDefault();
         fetch("http://localhost:9292/properties", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
             },
-            body: JSON.stringify({
-                street_address: newProperty.mortgagePayment,
-                city: newProperty.city,
-                state: newProperty.state,
-                purchase_price: newProperty.purchasePrice,
-                square_feet: newProperty.sqft,
-                garage_spaces: newProperty.garage,
-                link: newProperty.link,
-                type: newProperty.type,
-                flip_status: newProperty.flipStatus
-            }),
+            body: JSON.stringify(formData),
         }).then(r => r.json())
         navigate('/')
     }
@@ -49,29 +40,24 @@ function PropertyForm() {
             <form onSubmit={handleNewProperty}>
                 <p id='propertyRecordHeader'>Enter a new Property:</p>
                 <br/>
-                <input type="text" className="propertyFormElement" id="streetAddress" value={formData.streetAddress} onChange={handleFormChange} placeholder="Property Street Address"/>
+                <input type="text" className="propertyFormElement" id="street_address" value={formData.street_address} onChange={handleFormChange} placeholder="Property Street Address"/>
                 <br/>
                 <input type="text" className="propertyFormElement" id="city" value={formData.city} onChange={handleFormChange} placeholder="City"/>
                 <br/>
                 <input type="text" className="propertyFormElement" id="state" value={formData.state} onChange={handleFormChange} placeholder="State"/>
                 <br/>
-                <input type="text" className="propertyFormElement" id="purchasePrice" value={formData.purchasePrice} onChange={handleFormChange} placeholder="Purchase Price (No dollar sign)"/>
+                <input type="text" className="propertyFormElement" id="purchase_price" value={formData.purchase_price} onChange={handleFormChange} placeholder="Purchase Price (No dollar sign)"/>
                 <br/>
-                <input type="text" className="propertyFormElement" id="sqft" value={formData.sqft} onChange={handleFormChange} placeholder="Square feet"/>
+                <input type="text" className="propertyFormElement" id="square_feet" value={formData.square_feet} onChange={handleFormChange} placeholder="Square feet"/>
                 <br/>
-                <input type="text" className="propertyFormElement" id="garage" value={formData.garage} onChange={handleFormChange} placeholder="Garage Spaces"/>
+                <input type="text" className="propertyFormElement" id="garage_spaces" value={formData.garage_spaces} onChange={handleFormChange} placeholder="Garage Spaces"/>
                 <br/>
                 <input type="text" className="propertyFormElement" id="link" value={formData.link} onChange={handleFormChange} placeholder="Image URL"/>
                 <br/>
-                <input type="text" className="propertyFormElement" id="flipStatus" value={formData.flipStatus} onChange={handleFormChange} placeholder="Flip Status"/>
+                <input type="text" className="propertyFormElement" id="flip_status" value={formData.flip_status} onChange={handleFormChange} placeholder="Flip Status"/>
                 <br/>
-                <select className="propertyFormElement" name="type" defaultValue="Single Family" onChange={handleFormChange}>
-                    <option value="Single Family" key="SingleFamily">Single Family</option>
-                    <option value="Condo/Townhouse" key="CondoTownhouse">Condo/Townhouse</option>
-                    <option value="Multifamily" key="Multifamily">Multifamily</option>
-                    <option value="Apartment Building" key="Apartment">Apartment Building</option>
-                    <option value="Commercial/Business" key="CommercialBusiness">Commercial/Business</option>
-                </select>
+                <input type="text" className="propertyFormElement" id="property_type" value={formData.property_type} onChange={handleFormChange} placeholder="Property Type"/>
+                <br/>
                 <br/>
                 <button className='submit'>Submit</button>
             </form>
