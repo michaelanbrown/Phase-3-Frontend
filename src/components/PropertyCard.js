@@ -9,6 +9,13 @@ function PropertyCard({ property }) {
     const purchasePrice = property.purchase_price ? `$${property.purchase_price}` : "Pending Purchase"
     const garageSpaces = property.garage_spaces ? `${property.garage_spaces} garage spaces` : "No garage"
 
+    function handlePropertyDelete() {
+        fetch(`localhost:9292/${property.id}`, {
+        method: "DELETE",
+        })
+        .then(r => r.json())
+    }
+
     return (
         <div className="PropertyClass">
             <br></br>
@@ -32,6 +39,8 @@ function PropertyCard({ property }) {
                 <Routes>
                     <Route path={`${match}/*`} element={<Property/>} />
                 </Routes>
+                <br/>
+                <button onClick={handlePropertyDelete} className="delete"><span role="img" aria-label="delete">Delete this property</span></button>
             </p>
         </div>
     )
