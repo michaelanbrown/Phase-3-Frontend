@@ -64,8 +64,9 @@ function PropertyForm() {
                 <br/>
                 <input type="text" className="propertyFormElement" id="flip_status" value={formData.flip_status} onChange={handleFormChange} placeholder="Flip Status"/>
                 <br/>
-                <select className="propertyFormElement" id="type" name="type" defaultValue="Single Family" onChange={handleFormChange}>
-                    <option value="Single Family" key="SingleFamily">Single Family</option>
+                <select className="propertyFormElement" id="type" name="type" defaultValue="blank" onChange={handleTypechange}>
+                <option value="blank" key="blank">{' '}</option>
+                    <option value="Single family" key="SingleFamily">Single family</option>
                     <option value="Condo/Townhouse" key="CondoTownhouse">Condo/Townhouse</option>
                     <option value="Multifamily" key="Multifamily">Multifamily</option>
                     <option value="Apartment Building" key="Apartment">Apartment Building</option>
