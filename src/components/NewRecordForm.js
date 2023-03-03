@@ -18,12 +18,26 @@ function NewRecordForm({ propertyData }) {
         });
     }
 
-    function handleTypechange(e) {
-        setFormData({
-            ...formData,
-            [e.target.id] : document.getElementById('occupany').value
-        });
-    }
+    function handleTypeChange(e) {
+        if (document.getElementById('occupancy').value === "True") {
+            setFormData({
+                ...formData,
+                [e.target.id] : true
+            })
+        } else if (document.getElementById('occupancy').value === "False") {
+            setFormData({
+                ...formData,
+                [e.target.id] : false
+            });
+        } else {
+            setFormData({
+                ...formData,
+                [e.target.id] : null
+            })
+        }
+    };
+
+    console.log(formData)    
 
     function handleNewRecord(newRecord) {
         fetch("http://localhost:9292/records", {
@@ -58,7 +72,7 @@ function NewRecordForm({ propertyData }) {
                     <br/>
                     Income: <input type="text" className="recordFormElement" id="gross_income" value={formData.gross_income} onChange={handleFormChange} placeholder="Gross Income"/>
                     <br/>
-                    Occupied?: <select className="recordFormSelect" id="occupancy" name="occupany" defaultValue="blank" onChange={handleTypechange}>
+                    Occupied?: <select className="recordFormSelect" id="occupancy" name="occupancy" defaultValue="blank" onChange={handleTypeChange}>
                         <option value="blank" key="blank">{' '}</option>
                         <option value="True" key="True">True</option>
                         <option value="False" key="False">False</option>
@@ -72,22 +86,3 @@ function NewRecordForm({ propertyData }) {
 }
 
 export default NewRecordForm;
-
-// function handleCompleteAdd(futureEvent) {
-//     fetch("https://travel-station-data.onrender.com/travels", {
-//     method: "POST",
-//     headers: {
-//         "Content-Type" : "application/json"
-//     },
-//     body: JSON.stringify({
-//         city: futureEvent.city,
-//         state: futureEvent.state,
-//         date: futureEvent.date,
-//         photo: futureEvent.photo
-//     }),
-//     })
-//     .then(r => r.json())
-//     .then(data => {
-//         setTravels([...travels, data]);
-//     })
-// }
