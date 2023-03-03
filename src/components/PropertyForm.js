@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './App.css';
 
 function PropertyForm() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         streetAddress: "",
         city: "",
@@ -39,6 +41,7 @@ function PropertyForm() {
                 flip_status: newProperty.flipStatus
             }),
         }).then(r => r.json())
+        navigate('/')
     }
 
     return (
@@ -52,7 +55,7 @@ function PropertyForm() {
                 <br/>
                 <input type="text" className="propertyFormElement" id="state" value={formData.state} onChange={handleFormChange} placeholder="State"/>
                 <br/>
-                <input type="text" className="propertyFormElement" id="purchasePrice" value={formData.purchasePrice} onChange={handleFormChange} placeholder="Purchase Price (if Applicable)"/>
+                <input type="text" className="propertyFormElement" id="purchasePrice" value={formData.purchasePrice} onChange={handleFormChange} placeholder="Purchase Price (No dollar sign)"/>
                 <br/>
                 <input type="text" className="propertyFormElement" id="sqft" value={formData.sqft} onChange={handleFormChange} placeholder="Square feet"/>
                 <br/>
