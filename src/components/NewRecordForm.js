@@ -3,7 +3,7 @@ import './App.css';
 
 function NewRecordForm({ propertyData }) {
     const [formData, setFormData] = useState({
-        street_address: "",
+        street_address: propertyData.street_address,
         mortgage_payment: "",
         hoa_payment: "",
         property_management_payment: "",
@@ -36,8 +36,7 @@ function NewRecordForm({ propertyData }) {
             })
         }
     };
-
-    console.log(formData)    
+  
 
     function handleNewRecord(newRecord) {
         fetch("http://localhost:9292/records", {
@@ -62,7 +61,7 @@ function NewRecordForm({ propertyData }) {
                 <p id='recordHeader'>Enter a new Finance Record:</p>
                 <br/>
                 <div className="formBox">
-                    Street Address: <input type="text" className="recordFormElement" id="street_address" value={formData.street_address} onChange={handleFormChange} placeholder="Property Street Address"/>
+                    Street Address: <input type="text" className="recordFormElement" id="street_address" defaultValue={propertyData.street_address} onChange={handleFormChange} placeholder="Property Street Address"/>
                     <br/>
                     Mortgage Payment: <input type="text" className="recordFormElement" id="mortgage_payment" value={formData.mortgage_payment} onChange={handleFormChange} placeholder="Mortgage Payment"/>
                     <br/>
