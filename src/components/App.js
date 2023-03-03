@@ -25,9 +25,9 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/owned/*" element={<Owned properties={properties.filter(t => t.purchase_price !== null)}/>} />
             <Route path="/pending/*" element={<Pending properties={properties.filter(t => t.purchase_price === null)}/>} />
-            <Route path="/new-property" element={<PropertyForm/>} />
-            <Route path="/owned/:id" element={<Property properties={properties}/>} />
-            <Route path="/pending/:id" element={<Property properties={properties}/>} />
+            <Route path="/new-property" element={<PropertyForm properties={properties} setProperties={setProperties}/>} />
+            <Route path="/owned/:id" element={<Property properties={properties} />} />
+            <Route path="/pending/:id" element={<Property properties={properties} />} />
         </Routes>
     </div>
   );
