@@ -27,6 +27,11 @@ function PropertyCard({ property }) {
                 <br/>
                 {property.state}
                 <br/>
+                <Link to={propertyURL}>View Details</Link>
+                <Routes>
+                    <Route path={`${match}/*`} element={<Property/>} />
+                </Routes>
+                <br/>
                 {purchasePrice}
                 <br/>
                 {property.square_feet} sqft
@@ -34,11 +39,6 @@ function PropertyCard({ property }) {
                 {garageSpaces}
                 <br/>
                 {property.type.property_type}
-                <br/>
-                <Link to={propertyURL}>View Details</Link>
-                <Routes>
-                    <Route path={`${match}/*`} element={<Property/>} />
-                </Routes>
                 <br/>
                 <button onClick={handlePropertyDelete} className="delete"><span role="img" aria-label="delete">Delete this property</span></button>
             </p>
