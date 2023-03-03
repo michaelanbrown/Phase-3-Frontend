@@ -41,19 +41,19 @@ function NewRecordForm() {
             <form>
                 <p id='recordHeader'>Enter a new Finance Record:</p>
                 <br/>
-                <input type="text" id="property" value={formData.property} onChange={handleFormChange} placeholder="Property Street Address"/>
+                <input type="text" className="formElement" id="property" value={formData.property} onChange={handleFormChange} placeholder="Property Street Address"/>
                 <br/>
-                <input type="text" id="mortgage" value={formData.mortgagePayment} onChange={handleFormChange} placeholder="Mortgage Payment"/>
+                <input type="text" className="formElement" id="mortgage" value={formData.mortgagePayment} onChange={handleFormChange} placeholder="Mortgage Payment"/>
                 <br/>
-                <input type="text" id="hoa" value={formData.hOAPayment} onChange={handleFormChange} placeholder="HOA Payment"/>
+                <input type="text" className="formElement" id="hoa" value={formData.hOAPayment} onChange={handleFormChange} placeholder="HOA Payment"/>
                 <br/>
-                <input type="text" id="propertyManagement" value={formData.propertyManagementPayment} onChange={handleFormChange} placeholder="Property Management Payment"/>
+                <input type="text" className="formElement" id="propertyManagement" value={formData.propertyManagementPayment} onChange={handleFormChange} placeholder="Property Management Payment"/>
                 <br/>
-                <input type="text" id="grossIncome" value={formData.grossIncome} onChange={handleFormChange} placeholder="Gross Income"/>
+                <input type="text" className="formElement" id="grossIncome" value={formData.grossIncome} onChange={handleFormChange} placeholder="Gross Income"/>
                 <br/>
-                <input type="text" id="occupancy" value={formData.occupancy} onChange={handleFormChange} placeholder="Gross Income"/>
+                <input type="text" className="formElement" id="occupancy" value={formData.occupancy} onChange={handleFormChange} placeholder="Gross Income"/>
                 <br/>
-                <button class='submit'>Submit</button>
+                <button className='submit'>Submit</button>
             </form>
         </div>
     )

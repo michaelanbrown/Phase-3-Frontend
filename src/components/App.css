@@ -57,29 +57,14 @@ body {
   margin-bottom: 0;
 }
 
-#property {
-  font-size: 100%
-}
-#occupancy {
-  font-size: 100%
-}
-#grossIncome {
-  font-size: 100%
-}
-#mortgage {
-  font-size: 100%
-}
-#hoa {
-  font-size: 100%
-}
-#propertyManagement {
-  font-size: 100%
-}
-
 .submit {
   background-color:rgba(135, 109, 197, 0.402);
   font-weight: bold;
   font-size: 95%;
   margin-top: 10px;
   cursor: pointer;
+}
+
+.formElement{
+  font-size: 100%
 }
