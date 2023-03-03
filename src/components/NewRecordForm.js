@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import './App.css';
 
-function NewRecordForm() {
+function NewRecordForm({ propertyData }) {
     const [formData, setFormData] = useState({
-        mortgagePayment: "",
-        hOAPayment: "",
-        propertyManagementPayment: "",
-        grossIncome: "",
-        occupancy: "",
-        property: ""
+        street_address: "",
+        mortgage_payment: "",
+        hoa_payment: "",
+        property_management_payment: "",
+        gross_income: "",
+        occupancy: ""
     });
-
+    
     function handleFormChange(e) {
         setFormData({
             ...formData,
@@ -21,7 +21,7 @@ function NewRecordForm() {
     function handleTypechange(e) {
         setFormData({
             ...formData,
-            [e.target.id] : document.getElementById('type').value
+            [e.target.id] : document.getElementById('occupany').value
         });
     }
 
@@ -32,12 +32,12 @@ function NewRecordForm() {
                 "Content-Type" : "application/json"
             },
             body: JSON.stringify({
-                mortgage_payment: newRecord.mortgagePayment,
-                hoa_payment: newRecord.hOAPayment,
-                property_management_payment: newRecord.propertyManagementPayment,
-                gross_income: newRecord.grossIncome,
-                occupancy: newRecord.occupancy,
-                property: newRecord.property
+                street_address: newRecord.street_address,
+                mortgage_payment: newRecord.mortgage_payment,
+                hoa_payment: newRecord.hoa_payment,
+                property_management_payment: newRecord.property_management_payment,
+                gross_income: newRecord.gross_income,
+                occupancy: newRecord.occupancy
             }),
         }).then(r => r.json())
     }
@@ -48,15 +48,15 @@ function NewRecordForm() {
                 <p id='recordHeader'>Enter a new Finance Record:</p>
                 <br/>
                 <div className="formBox">
-                    Street Address: <input type="text" className="recordFormElement" id="property" value={formData.property} onChange={handleFormChange} placeholder="Property Street Address"/>
+                    Street Address: <input type="text" className="recordFormElement" id="street_address" value={formData.street_address} onChange={handleFormChange} placeholder="Property Street Address"/>
                     <br/>
-                    Mortgage Payment: <input type="text" className="recordFormElement" id="mortgage" value={formData.mortgagePayment} onChange={handleFormChange} placeholder="Mortgage Payment"/>
+                    Mortgage Payment: <input type="text" className="recordFormElement" id="mortgage_payment" value={formData.mortgage_payment} onChange={handleFormChange} placeholder="Mortgage Payment"/>
                     <br/>
-                    HOA Payment: <input type="text" className="recordFormElement" id="hoa" value={formData.hOAPayment} onChange={handleFormChange} placeholder="HOA Payment"/>
+                    HOA Payment: <input type="text" className="recordFormElement" id="hoa_payment" value={formData.hoa_payment} onChange={handleFormChange} placeholder="HOA Payment"/>
                     <br/>
-                    Property Management Payment: <input type="text" className="recordFormElement" id="propertyManagement" value={formData.propertyManagementPayment} onChange={handleFormChange} placeholder="Property Management Payment"/>
+                    Property Management Payment: <input type="text" className="recordFormElement" id="property_management_payment" value={formData.property_management_payment} onChange={handleFormChange} placeholder="Property Management Payment"/>
                     <br/>
-                    Income: <input type="text" className="recordFormElement" id="grossIncome" value={formData.grossIncome} onChange={handleFormChange} placeholder="Gross Income"/>
+                    Income: <input type="text" className="recordFormElement" id="gross_income" value={formData.gross_income} onChange={handleFormChange} placeholder="Gross Income"/>
                     <br/>
                     Occupied?: <select className="recordFormSelect" id="occupancy" name="occupany" defaultValue="blank" onChange={handleTypechange}>
                         <option value="blank" key="blank">{' '}</option>

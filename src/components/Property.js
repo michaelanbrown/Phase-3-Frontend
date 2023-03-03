@@ -10,7 +10,6 @@ function Property() {
     const purchasePrice = propertyData.purchase_price ? `$${propertyData.purchase_price}` : "Pending Purchase"
     const garageSpaces = propertyData.garage_spaces ? `${propertyData.garage_spaces} garage spaces` : "No garage"
 
-
     useEffect(() => {
         fetch(`http://localhost:9292/properties/${id}`)
         .then(r => r.json())
@@ -42,7 +41,7 @@ function Property() {
             <h3>Finance Records:</h3>
             {mappedRecords}
             <br/>
-            <NewRecordForm/>
+            <NewRecordForm propertyData={propertyData}/>
         </div>
     )
 }
