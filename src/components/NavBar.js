@@ -12,6 +12,8 @@ export default function NavBar ()  {
             <NavLink to="/owned">Owned</NavLink>
             <br></br>
             <NavLink to="/pending">Pending</NavLink>
+            <br></br>
+            <NavLink to="/new-property">Add a Property</NavLink>
         </nav>
     )
 }
