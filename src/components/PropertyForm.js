@@ -63,9 +63,15 @@ function PropertyForm() {
                 <br/>
                 <input type="text" className="propertyFormElement" id="link" value={formData.link} onChange={handleFormChange} placeholder="Image URL"/>
                 <br/>
-                <input type="text" className="propertyFormElement" id="type" value={formData.type} onChange={handleFormChange} placeholder="Property Type"/>
-                <br/>
                 <input type="text" className="propertyFormElement" id="flipStatus" value={formData.flipStatus} onChange={handleFormChange} placeholder="Flip Status"/>
+                <br/>
+                <select className="propertyFormElement" name="type" defaultValue="Single Family" onChange={handleFormChange}>
+                    <option value="Single Family" key="SingleFamily">Single Family</option>
+                    <option value="Condo/Townhouse" key="CondoTownhouse">Condo/Townhouse</option>
+                    <option value="Multifamily" key="Multifamily">Multifamily</option>
+                    <option value="Apartment Building" key="Apartment">Apartment Building</option>
+                    <option value="Commercial/Business" key="CommercialBusiness">Commercial/Business</option>
+                </select>
                 <br/>
                 <button className='submit'>Submit</button>
             </form>
