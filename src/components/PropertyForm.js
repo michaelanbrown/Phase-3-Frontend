@@ -42,6 +42,7 @@ function PropertyForm({ newAddition, setNewAddition }) {
         .then(r => {
             setNewAddition(!newAddition);
         })
+        e.target.reset()
         navigate('/')
     }
 

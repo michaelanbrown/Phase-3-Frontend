@@ -44,6 +44,7 @@ function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
             },
             body: JSON.stringify(recordFormData)
         })
+        e.target.reset()
         setNewAddition(!newAddition);
     }
 
