@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 
-function PropertyForm({ properties, setProperties }) {
+function PropertyForm({ handleAddition }) {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         street_address: "",
@@ -40,7 +40,7 @@ function PropertyForm({ properties, setProperties }) {
             body: JSON.stringify(formData),
         }).then(r => r.json())
         .then(r => {
-            setProperties([...properties, r]);
+            handleAddition();
         })
         navigate('/')
     }

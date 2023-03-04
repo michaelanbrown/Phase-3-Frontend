@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 
-function NewRecordForm({ propertyData }) {
+function NewRecordForm({ propertyData, records, setRecords }) {
     const [formData, setFormData] = useState({
-        street_address: propertyData.street_address,
+        property: propertyData.property,
         mortgage_payment: "",
         hoa_payment: "",
         property_management_payment: "",
@@ -38,21 +38,18 @@ function NewRecordForm({ propertyData }) {
     };
   
 
-    function handleNewRecord(newRecord) {
+    function handleNewRecord(e) {
+        e.preventDefault();
         fetch("http://localhost:9292/records", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
             },
-            body: JSON.stringify({
-                street_address: newRecord.street_address,
-                mortgage_payment: newRecord.mortgage_payment,
-                hoa_payment: newRecord.hoa_payment,
-                property_management_payment: newRecord.property_management_payment,
-                gross_income: newRecord.gross_income,
-                occupancy: newRecord.occupancy
-            }),
+            body: JSON.stringify(formData),
         }).then(r => r.json())
+        .then(r => {
+            setRecords([...records]);
+        })
     }
 
     return (
@@ -61,7 +58,7 @@ function NewRecordForm({ propertyData }) {
                 <p id='recordHeader'>Enter a new Finance Record:</p>
                 <br/>
                 <div className="formBox">
-                    Street Address: <input type="text" className="recordFormElement" id="street_address" defaultValue={propertyData.street_address} onChange={handleFormChange} placeholder="Property Street Address"/>
+                    Street Address: <input type="text" className="recordFormElement" id="property" defaultValue={propertyData.street_address} onChange={handleFormChange} placeholder="Property Street Address"/>
                     <br/>
                     Mortgage Payment: <input type="text" className="recordFormElement" id="mortgage_payment" value={formData.mortgage_payment} onChange={handleFormChange} placeholder="Mortgage Payment"/>
                     <br/>
