@@ -37,7 +37,7 @@ function PropertyForm({ handleAddition }) {
             headers: {
                 "Content-Type" : "application/json"
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify(formData)
         }).then(r => r.json())
         .then(r => {
             handleAddition();

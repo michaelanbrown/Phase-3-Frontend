@@ -2,11 +2,11 @@ import React from 'react';
 import './App.css';
 import PropertyCard from './PropertyCard';
 
-function Pending({ properties }) {
+function Pending({ properties, handleAddition }) {
 
     const propertyRender = properties.map (property => {
         return (
-            <PropertyCard property={property} key={property.id}/>
+            <PropertyCard property={property} key={property.id} handleAddition={handleAddition}/>
         )
     })
 

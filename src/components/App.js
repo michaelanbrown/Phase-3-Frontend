@@ -35,11 +35,11 @@ function App() {
         <Header />
         <Routes>
             <Route path="/" element={<Home/>} />
-            <Route path="/owned/*" element={<Owned properties={properties.filter(t => t.purchase_price !== null)}/>} />
-            <Route path="/pending/*" element={<Pending properties={properties.filter(t => t.purchase_price === null)}/>} />
+            <Route path="/owned/*" element={<Owned handleAddition={handleAddition} properties={properties.filter(t => t.purchase_price !== null)}/>} />
+            <Route path="/pending/*" element={<Pending handleAddition={handleAddition} properties={properties.filter(t => t.purchase_price === null)}/>} />
             <Route path="/new-property" element={<PropertyForm properties={properties} setProperties={setProperties} handleAddition={handleAddition}/>} />
-            <Route path="/owned/:id" element={<Property properties={properties} records={records} setRecords={setRecords}/>} />
-            <Route path="/pending/:id" element={<Property properties={properties} records={records} setRecords={setRecords}/>} />
+            <Route path="/owned/:id" element={<Property properties={properties} handleAddition={handleAddition}/>} />
+            <Route path="/pending/:id" element={<Property properties={properties} handleAddition={handleAddition}/>} />
         </Routes>
     </div>
   );
