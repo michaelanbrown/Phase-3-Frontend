@@ -25,12 +25,14 @@ function NewRecordForm({ propertyData, handleAddition }) {
         if (document.getElementById('occupancy').value === "True") {
             setRecordFormData({
                 ...recordFormData,
-                [e.target.id] : true
+                [e.target.id] : true,
+                property : document.getElementById('property').value
             })
         } else if (document.getElementById('occupancy').value === "False") {
             setRecordFormData({
                 ...recordFormData,
-                [e.target.id] : false
+                [e.target.id] : false,
+                property : document.getElementById('property').value
             });
         }
     };
