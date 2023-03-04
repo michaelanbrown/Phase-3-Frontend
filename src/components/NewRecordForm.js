@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-function NewRecordForm({ propertyData, handleAddition }) {
+function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
     const [recordFormData, setRecordFormData] = useState({
         mortgage_payment: "",
         hoa_payment: "",
@@ -10,8 +10,6 @@ function NewRecordForm({ propertyData, handleAddition }) {
         occupancy: "",
         property: ""
     });
-
-    console.log(recordFormData)
 
     function handleFormChange(e) {
         setRecordFormData({
@@ -45,10 +43,8 @@ function NewRecordForm({ propertyData, handleAddition }) {
                 "Content-Type" : "application/json"
             },
             body: JSON.stringify(recordFormData)
-        }).then(r => r.json())
-        .then(r => {
-            handleAddition();
         })
+        setNewAddition(!newAddition);
     }
 
     return (

@@ -3,7 +3,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import './App.css';
 import Property from './Property';
 
-function PropertyCard({ property, handleAddition }) {
+function PropertyCard({ property, setNewAddition, newAddition }) {
     const propertyURL = property.purchase_price ? `/owned/${property.id}` : `/pending/${property.id}`
     const match = property.purchase_price ? '/owned' : '/pending'
     const purchasePrice = property.purchase_price ? `$${property.purchase_price}` : "Pending Purchase"
@@ -15,7 +15,7 @@ function PropertyCard({ property, handleAddition }) {
         })
         .then(r => r.json())
         .then (r => {
-            handleAddition();
+            setNewAddition(!newAddition);
         })
     }
 

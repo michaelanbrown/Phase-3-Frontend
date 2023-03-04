@@ -10,7 +10,7 @@ import PropertyForm from './PropertyForm';
 
 function App() {
   const [properties, setProperties] = useState([]);
-  const [newAddition, setnewAddition] = useState(true);
+  const [newAddition, setNewAddition] = useState(true);
   const [records, setRecords] = useState([]);
 
   useEffect(() => {
@@ -24,22 +24,18 @@ function App() {
     .then(data => {
       setRecords(data)
     })
-  }, [newAddition])
-
-  function handleAddition() {
-    setnewAddition(!newAddition)
-  }
+  }, [newAddition, setNewAddition])
 
   return (
     <div>
         <Header />
         <Routes>
             <Route path="/" element={<Home/>} />
-            <Route path="/owned/*" element={<Owned handleAddition={handleAddition} properties={properties.filter(t => t.purchase_price !== null)}/>} />
-            <Route path="/pending/*" element={<Pending handleAddition={handleAddition} properties={properties.filter(t => t.purchase_price === null)}/>} />
-            <Route path="/new-property" element={<PropertyForm properties={properties} setProperties={setProperties} handleAddition={handleAddition}/>} />
-            <Route path="/owned/:id" element={<Property properties={properties} handleAddition={handleAddition}/>} />
-            <Route path="/pending/:id" element={<Property properties={properties} handleAddition={handleAddition}/>} />
+            <Route path="/owned/*" element={<Owned newAddition={newAddition} setNewAddition={setNewAddition} properties={properties.filter(t => t.purchase_price !== null)}/>} />
+            <Route path="/pending/*" element={<Pending newAddition={newAddition} setNewAddition={setNewAddition} properties={properties.filter(t => t.purchase_price === null)}/>} />
+            <Route path="/new-property" element={<PropertyForm properties={properties} setProperties={setProperties} newAddition={newAddition} setNewAddition={setNewAddition}/>} />
+            <Route path="/owned/:id" element={<Property properties={properties} newAddition={newAddition} setNewAddition={setNewAddition}/>} />
+            <Route path="/pending/:id" element={<Property properties={properties} newAddition={newAddition}  setNewAddition={setNewAddition}/>} />
         </Routes>
     </div>
   );
