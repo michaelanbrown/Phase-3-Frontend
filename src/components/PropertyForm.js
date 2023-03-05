@@ -42,7 +42,17 @@ function PropertyForm({ newAddition, setNewAddition }) {
         .then(r => {
             setNewAddition(!newAddition);
         })
-        e.target.reset()
+        .then(setFormData({
+            street_address: "",
+            city: "",
+            state: "",
+            purchase_price: "",
+            square_feet: "",
+            garage_spaces: "",
+            link: "",
+            flip_status: "",
+            type: ""
+        }))
         navigate('/')
     }
 

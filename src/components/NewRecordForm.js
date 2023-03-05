@@ -8,7 +8,6 @@ function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
         hoa_payment: "",
         property_management_payment: "",
         gross_income: "",
-        occupancy: "",
         property: ""
     });
 
@@ -20,22 +19,6 @@ function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
         });
     }
 
-    function handleTypeChange(e) {
-        if (document.getElementById('occupancy').value === "True") {
-            setRecordFormData({
-                ...recordFormData,
-                [e.target.id] : true,
-                property : document.getElementById('property').value
-            })
-        } else if (document.getElementById('occupancy').value === "False") {
-            setRecordFormData({
-                ...recordFormData,
-                [e.target.id] : false,
-                property : document.getElementById('property').value
-            });
-        }
-    };
-
     function handleNewRecord(e) {
         e.preventDefault();
         fetch("http://localhost:9292/records", {
@@ -46,17 +29,16 @@ function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
             body: JSON.stringify(recordFormData)
         })
         .then(r => r.json())
-        .then(r => {
-            setNewAddition(!newAddition);
-        })
         .then(setRecordFormData({
             mortgage_payment: "",
             hoa_payment: "",
             property_management_payment: "",
             gross_income: "",
-            occupancy: "",
             property: ""
         }))
+        .then(r => {
+            setNewAddition(!newAddition);
+        })
     }
 
     
@@ -75,12 +57,6 @@ function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
                     Property Management Payment: <input type="text" className="recordFormElement" id="property_management_payment" value={recordFormData.property_management_payment} onChange={handleFormChange} placeholder="Property Management Payment"/>
                     <br/>
                     Income: <input type="text" className="recordFormElement" id="gross_income" value={recordFormData.gross_income} onChange={handleFormChange} placeholder="Gross Income"/>
-                    <br/>
-                    Occupied?: <select className="recordFormSelect" id="occupancy" name="occupancy" defaultValue="blank" onChange={handleTypeChange}>
-                        <option value="blank" key="blank">{' '}</option>
-                        <option value="True" key="True">True</option>
-                        <option value="False" key="False">False</option>
-                    </select>
                     <br/>
                     <button className='submit'>Submit</button>
                 </div>
