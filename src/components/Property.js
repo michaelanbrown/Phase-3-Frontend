@@ -48,10 +48,10 @@ function Property({  records, setRecords }) {
             <br/>
             Property Type: {propertyData.type ? propertyData.type.property_type : null}
             <br/>
+            <br/>
             <button className='submit' onClick={handleUpdateStatusClick}>{update}</button>
             <br/>
             <UpdatePropertyForm updateStatus={updateStatus}/>
-            <br/>
             <br/>
             <h3>Finance Records:</h3>
             {mappedRecords}
