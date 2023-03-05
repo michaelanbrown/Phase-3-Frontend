@@ -24,7 +24,7 @@ function App() {
     .then(data => {
       setRecords(data)
     })
-  }, [setRecords])
+  }, [setRecords, setProperties])
 
   return (
     <div>

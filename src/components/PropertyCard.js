@@ -10,6 +10,7 @@ function PropertyCard({ property, properties, setProperties }) {
     const garageSpaces = property.garage_spaces ? `${property.garage_spaces} garage spaces` : "No garage"
     const propertyType = property.type.property_type ? property.type.property_type : null
 
+
     function deletion(deleted) {
         const updatedProperties = properties.filter((prop) => prop.id !== deleted.id)
         setProperties(updatedProperties)

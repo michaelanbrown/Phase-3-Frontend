@@ -39,7 +39,17 @@ function PropertyForm({ properties, setProperties }) {
             },
             body: JSON.stringify(formData)
         }).then(r => r.json())
-        .then(r => setProperties([...properties]))
+        .then(r => setProperties([...properties,
+            {street_address: r.street_address,
+            city: r.city,
+            state: r.state,
+            purchase_price: r.purchase_price,
+            square_feet: r.square_feet,
+            garage_spaces: r.garage_spaces,
+            link: r.link,
+            flip_status: r.flip_status,
+            id: r.id,
+            type:{property_type: r.type}}]))
         .then(setFormData({
             street_address: "",
             city: "",
