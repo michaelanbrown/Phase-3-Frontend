@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 
-function PropertyForm({ newAddition, setNewAddition }) {
+function PropertyForm({ properties, setProperties }) {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         street_address: "",
@@ -39,9 +39,7 @@ function PropertyForm({ newAddition, setNewAddition }) {
             },
             body: JSON.stringify(formData)
         }).then(r => r.json())
-        .then(r => {
-            setNewAddition(!newAddition);
-        })
+        .then(r => setProperties([...properties]))
         .then(setFormData({
             street_address: "",
             city: "",

@@ -2,11 +2,11 @@ import React from 'react';
 import './App.css';
 import PropertyCard from './PropertyCard';
 
-function Owned({ properties, newAddition, setNewAddition }) {
+function Owned({ properties, setProperties }) {
     
     const propertyRender = properties.map (property => {
         return (
-            <PropertyCard property={property} key={property.id} newAddition={newAddition} setNewAddition={setNewAddition}/>
+            <PropertyCard properties={properties} setProperties={setProperties} property={property} key={property.id} />
         )
     })
 

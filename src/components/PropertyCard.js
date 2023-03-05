@@ -3,22 +3,25 @@ import { Link, Route, Routes } from "react-router-dom";
 import './App.css';
 import Property from './Property';
 
-function PropertyCard({ property, setNewAddition, newAddition }) {
+function PropertyCard({ property, properties, setProperties }) {
     const propertyURL = property.purchase_price ? `/owned/${property.id}` : `/pending/${property.id}`
     const match = property.purchase_price ? '/owned' : '/pending'
     const purchasePrice = property.purchase_price ? `$${property.purchase_price}` : "Pending Purchase"
     const garageSpaces = property.garage_spaces ? `${property.garage_spaces} garage spaces` : "No garage"
+    const propertyType = property.type.property_type ? property.type.property_type : null
+
+    function deletion(deleted) {
+        const updatedProperties = properties.filter((prop) => prop.id !== deleted.id)
+        setProperties(updatedProperties)
+    }
 
     function handlePropertyDelete() {
         fetch(`http://localhost:9292/properties/${property.id}`, {
         method: "DELETE",
         })
         .then(r => r.json())
-        .then (r => {
-            setNewAddition(!newAddition);
-        })
+        .then(() => deletion(property))
     }
-
 
     return (
         <div className="PropertyClass">
@@ -42,7 +45,7 @@ function PropertyCard({ property, setNewAddition, newAddition }) {
                 <br/>
                 {garageSpaces}
                 <br/>
-                {property.type.property_type}
+                {propertyType}
                 <br/>
                 <button onClick={handlePropertyDelete} className="delete"><span role="img" aria-label="delete">Delete this property</span></button>
             </p>

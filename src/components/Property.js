@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import RecordCard from './RecordCard';
 import NewRecordForm from './NewRecordForm';
 
-function Property({ newAddition, setNewAddition }) {
+function Property({  records, setRecords }) {
     const [propertyData, setPropertyData] = useState([])
     const { id } = useParams();
     const purchasePrice = propertyData.purchase_price ? `$${propertyData.purchase_price}` : "Pending Purchase"
@@ -15,7 +15,7 @@ function Property({ newAddition, setNewAddition }) {
         .then(r => r.json())
         .then(data => {
             setPropertyData(data);
-        })}, [newAddition, setNewAddition])
+        })}, [])
 
         const mappedRecords = propertyData.records ? propertyData.records.map(rec => {
             return (<RecordCard record={rec} key={rec.id}/>)
@@ -41,7 +41,7 @@ function Property({ newAddition, setNewAddition }) {
             <h3>Finance Records:</h3>
             {mappedRecords}
             <br/>
-            <NewRecordForm propertyData={propertyData} setNewAddition={setNewAddition} newAddition={newAddition}/>
+            <NewRecordForm records={records} setRecords={setRecords} propertyData={propertyData} />
         </div>
     )
 }

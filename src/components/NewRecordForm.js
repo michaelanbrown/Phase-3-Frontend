@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './App.css';
 
-function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
+function NewRecordForm({ records, setRecords }) {
     const { id } = useParams();
     const [recordFormData, setRecordFormData] = useState({
         mortgage_payment: "",
@@ -25,7 +25,6 @@ function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
             ...recordFormData,
             [e.target.id] : e.target.value,
         });
-        console.log(recordFormData)
     }
 
     function handleNewRecord(e) {
@@ -38,6 +37,7 @@ function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
             body: JSON.stringify(recordFormData)
         })
         .then(r => r.json())
+        .then(r => setRecords([...records, r]))
         .then(setRecordFormData({
             mortgage_payment: "",
             hoa_payment: "",
@@ -45,9 +45,6 @@ function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
             gross_income: "",
             property: ""
         }))
-        .then(r => {
-            setNewAddition(!newAddition);
-        })
     }
 
     
