@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './App.css';
 
 function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
-    const address = document.getElementById('property')
+    const { id } = useParams();
     const [recordFormData, setRecordFormData] = useState({
         mortgage_payment: "",
         hoa_payment: "",
@@ -11,12 +12,20 @@ function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
         property: ""
     });
 
+    useEffect(() => {
+        fetch(`http://localhost:9292/properties/${id}`)
+        .then(r => r.json())
+        .then(data => {
+            setRecordFormData({...recordFormData, property : data.street_address})
+        })
+    },[id])
+
     function handleFormChange(e) {
         setRecordFormData({
             ...recordFormData,
             [e.target.id] : e.target.value,
-            property : address.value
         });
+        console.log(recordFormData)
     }
 
     function handleNewRecord(e) {
@@ -48,7 +57,7 @@ function NewRecordForm({ propertyData, setNewAddition, newAddition }) {
                 <p id='recordHeader'>Enter a new Finance Record:</p>
                 <br/>
                 <div className="formBox">
-                    Street Address: <input type="text" className="recordFormElement" id="property" defaultValue={propertyData.street_address} onChange={handleFormChange} placeholder="Property Street Address"/>
+                    Street Address: <input type="text" className="recordFormElement" id="property" value={recordFormData.property} onChange={handleFormChange} placeholder="Property Street Address"/>
                     <br/>
                     Mortgage Payment: <input type="text" className="recordFormElement" id="mortgage_payment" value={recordFormData.mortgage_payment} onChange={handleFormChange} placeholder="Mortgage Payment"/>
                     <br/>
