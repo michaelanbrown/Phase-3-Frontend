@@ -29,7 +29,7 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
                 garage_spaces: r.garage_spaces,
                 link: r.link,
                 flip_status: r.flip_status,
-                type: r.type.property_type
+                type: r.type
         })
         })
     },[id])
@@ -94,7 +94,7 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
                 <br/>
                 Image URL: <input type="text" className="recordFormElement" id="link" value={updateProperty.link} onChange={handleFormChange} placeholder="Gross Income"/>
                 <br/>
-                Property Type: <select className="recordFormElement" id="type" name="type" defaultValue={updateProperty.type} onChange={handleTypechange}>
+                Property Type: <select className="recordFormElement" id="type" name="type" defaultValue={updateProperty.type.property_type} onChange={handleTypechange}>
                         <option value="Single family" key="SingleFamily">Single family</option>
                         <option value="Condo/Townhouse" key="CondoTownhouse">Condo/Townhouse</option>
                         <option value="Multifamily" key="Multifamily">Multifamily</option>
