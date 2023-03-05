@@ -60,6 +60,7 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
     }
 
     function handleUpdatingProperty(e) {
+        setUpdateProperty({...updateProperty, type: updateProperty.type.property_type})
         e.preventDefault();
         fetch(`http://localhost:9292/properties/${id}`, {
             method: "PATCH",
