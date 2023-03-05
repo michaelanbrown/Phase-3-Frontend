@@ -29,7 +29,7 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
                 garage_spaces: r.garage_spaces,
                 link: r.link,
                 flip_status: r.flip_status,
-                type: r.type
+                type: r.type.property_type
         })
         })
     },[id])
@@ -48,6 +48,17 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
         });
     }
 
+    function updatePropertiesArray(updatedProperty) {
+        const updatingProperty = properties.map((prop) => {
+            if (prop.id === updatedProperty.id) {
+                return updatedProperty
+            } else {
+                return prop
+            }
+        })
+        setProperties(updatingProperty)
+    }
+
     function handleUpdatingProperty(e) {
         e.preventDefault();
         fetch(`http://localhost:9292/properties/${id}`, {
@@ -58,28 +69,9 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
             body: JSON.stringify(updateProperty)
         })
         .then(r => r.json())
-        .then(r => setProperties([...properties,
-            {street_address: r.street_address,
-            city: r.city,
-            state: r.state,
-            purchase_price: r.purchase_price,
-            square_feet: r.square_feet,
-            garage_spaces: r.garage_spaces,
-            link: r.link,
-            flip_status: r.flip_status,
-            type:{property_type: r.type}}]))
-        .then(setUpdateProperty({
-            street_address: "",
-            city: "",
-            state: "",
-            purchase_price: "",
-            square_feet: "",
-            garage_spaces: "",
-            link: "",
-            flip_status: "",
-            type: ""
-        }))
+        .then(r => updatePropertiesArray(r))
     }
+
 
     return (updateStatus ? (
         <div>
@@ -102,7 +94,7 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
                 <br/>
                 Image URL: <input type="text" className="recordFormElement" id="link" value={updateProperty.link} onChange={handleFormChange} placeholder="Gross Income"/>
                 <br/>
-                Property Type: <select className="recordFormElement" id="type" name="type" defaultValue={updateProperty.type.property_type} onChange={handleTypechange}>
+                Property Type: <select className="recordFormElement" id="type" name="type" defaultValue={updateProperty.type} onChange={handleTypechange}>
                         <option value="Single family" key="SingleFamily">Single family</option>
                         <option value="Condo/Townhouse" key="CondoTownhouse">Condo/Townhouse</option>
                         <option value="Multifamily" key="Multifamily">Multifamily</option>
