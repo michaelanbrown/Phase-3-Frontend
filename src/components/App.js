@@ -10,7 +10,6 @@ import PropertyForm from './PropertyForm';
 
 function App() {
   const [properties, setProperties] = useState([]);
-  // const [newAddition, setNewAddition] = useState(true);
   const [records, setRecords] = useState([]);
 
   useEffect(() => {

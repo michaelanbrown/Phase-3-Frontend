@@ -37,7 +37,14 @@ function NewRecordForm({ records, setRecords }) {
             body: JSON.stringify(recordFormData)
         })
         .then(r => r.json())
-        .then(r => setRecords([...records, r]))
+        .then(r => setRecords([...records,
+            {gross_income: r.gross_income,
+            hoa_payment: r.hoa_payment,
+            id: r.id,
+            mortgage_payment: r.mortgage_payment,
+            property_id: id,
+            property_management_payment: r.property_management_payment
+        }]))
         .then(setRecordFormData({
             mortgage_payment: "",
             hoa_payment: "",
