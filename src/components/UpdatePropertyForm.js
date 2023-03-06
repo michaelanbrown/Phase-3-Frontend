@@ -5,15 +5,11 @@ import './App.css';
 function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
     const { id } = useParams();
     const [updateProperty, setUpdateProperty] = useState({
-        street_address: "",
-        city: "",
-        state: "",
         purchase_price: "",
         square_feet: "",
         garage_spaces: "",
         link: "",
-        flip_status: "",
-        type: ""
+        flip_status: ""
     });
 
     useEffect(() => {
@@ -73,18 +69,11 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
         .then(r => updatePropertiesArray(r))
     }
 
-
     return (updateStatus ? (
         <div>
             <form >
                 Enter Updates Here:
                 <br></br>
-                Street Address: <input type="text" className="recordFormElement" id="street_address" value={updateProperty.street_address} onChange={handleFormChange} placeholder="Property Street Address"/>
-                <br/>
-                City: <input type="text" className="recordFormElement" id="city" value={updateProperty.city} onChange={handleFormChange} placeholder="Mortgage Payment"/>
-                <br/>
-                State: <input type="text" className="recordFormElement" id="state" value={updateProperty.state} onChange={handleFormChange} placeholder="HOA Payment"/>
-                <br/>
                 Purchase Price: <input type="text" className="recordFormElement" id="purchase_price" value={updateProperty.purchase_price} onChange={handleFormChange} placeholder="Property Management Payment"/>
                 <br/>
                 Square Feet: <input type="text" className="recordFormElement" id="square_feet" value={updateProperty.square_feet} onChange={handleFormChange} placeholder="Gross Income"/>
@@ -94,14 +83,6 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
                 Flip Status: <input type="text" className="recordFormElement" id="flip_status" value={updateProperty.flip_status} onChange={handleFormChange} placeholder="Gross Income"/>
                 <br/>
                 Image URL: <input type="text" className="recordFormElement" id="link" value={updateProperty.link} onChange={handleFormChange} placeholder="Gross Income"/>
-                <br/>
-                Property Type: <select className="recordFormElement" id="type" name="type" defaultValue={updateProperty.type.property_type} onChange={handleTypechange}>
-                        <option value="Single family" key="SingleFamily">Single family</option>
-                        <option value="Condo/Townhouse" key="CondoTownhouse">Condo/Townhouse</option>
-                        <option value="Multifamily" key="Multifamily">Multifamily</option>
-                        <option value="Apartment Building" key="Apartment">Apartment Building</option>
-                        <option value="Commercial/Business" key="CommercialBusiness">Commercial/Business</option>
-                </select>
                 <br/>
                 <button className='submit' onSubmit={handleUpdatingProperty}>Submit Changes</button>
             </form>
