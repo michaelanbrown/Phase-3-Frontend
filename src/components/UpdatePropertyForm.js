@@ -9,7 +9,7 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
         square_feet: "",
         garage_spaces: "",
         link: "",
-        flip_status: ""
+        flip_status: "",
     });
 
     useEffect(() => {
@@ -17,30 +17,21 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
         .then(r => r.json())
         .then(r => {
             setUpdateProperty({...updateProperty,
-                street_address : r.street_address,
-                city: r.city,
-                state: r.state,
                 purchase_price: r.purchase_price,
                 square_feet: r.square_feet,
                 garage_spaces: r.garage_spaces,
                 link: r.link,
                 flip_status: r.flip_status,
-                type: r.type
         })
         })
     },[id])
+
+    console.log(updateProperty)
 
     function handleFormChange(e) {
         setUpdateProperty({
             ...updateProperty,
             [e.target.id] : e.target.value,
-        });
-    }
-
-    function handleTypechange(e) {
-        setUpdateProperty({
-            ...updateProperty,
-            [e.target.id] : document.getElementById('type').value
         });
     }
 
@@ -56,12 +47,12 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
     }
 
     function handleUpdatingProperty(e) {
-        setUpdateProperty({...updateProperty, type: updateProperty.type.property_type})
         e.preventDefault();
         fetch(`http://localhost:9292/properties/${id}`, {
             method: "PATCH",
             headers: {
-                "Content-Type" : "application/json"
+                "Content-Type" : "application/json",
+                "Accept" : "application/json"
             },
             body: JSON.stringify(updateProperty)
         })
