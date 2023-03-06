@@ -26,8 +26,6 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
         })
     },[id])
 
-    console.log(updateProperty)
-
     function handleFormChange(e) {
         setUpdateProperty({
             ...updateProperty,
