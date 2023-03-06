@@ -5,8 +5,8 @@ import RecordCard from './RecordCard';
 import NewRecordForm from './NewRecordForm';
 import UpdatePropertyForm from './UpdatePropertyForm';
 
-function Property({  records, setRecords, properties, setProperties }) {
-    const [propertyData, setPropertyData] = useState([])
+function Property({  properties, setProperties }) {
+    const [propertyData, setPropertyData] = useState({})
     const { id } = useParams();
     const [update, setUpdate] = useState("Want to Update Any Information?")
     const [updateStatus, setUpdateStatue] = useState(false);
@@ -20,9 +20,11 @@ function Property({  records, setRecords, properties, setProperties }) {
             setPropertyData(data);
         })}, [])
 
-        const mappedRecords = propertyData.records ? propertyData.records.map(rec => {
-            return (<RecordCard record={rec} key={rec.id}/>)
-        }) : null
+        console.log(propertyData)
+
+    const mappedRecords = propertyData.records ? propertyData.records.map(rec => {
+        return (<RecordCard record={rec} key={rec.id}/>)
+    }) : null
 
     function handleUpdateStatusClick() {
         setUpdateStatue(updateStatus => !updateStatus)
@@ -31,6 +33,11 @@ function Property({  records, setRecords, properties, setProperties }) {
         } else if (updateStatus === false) {
             setUpdate("Done updating information?")
         }
+    }
+
+    function addRecord(newRecord) {
+        const updatedRecords = [...propertyData.records, newRecord]
+        setPropertyData({...propertyData, records : updatedRecords})
     }
 
     return (
@@ -51,12 +58,12 @@ function Property({  records, setRecords, properties, setProperties }) {
             <br/>
             <button className='submit' onClick={handleUpdateStatusClick}>{update}</button>
             <br/>
-            <UpdatePropertyForm updateStatus={updateStatus} properties={properties} setProperties={setProperties}/>
+            <UpdatePropertyForm setPropertyData={setPropertyData} propertyData={propertyData} updateStatus={updateStatus} properties={properties} setProperties={setProperties}/>
             <br/>
             <h3>Finance Records:</h3>
             {mappedRecords}
             <br/>
-            <NewRecordForm records={records} setRecords={setRecords} propertyData={propertyData} />
+            <NewRecordForm propertyData={propertyData} setPropertyData={setPropertyData} addRecord={addRecord}/>
         </div>
     )
 }

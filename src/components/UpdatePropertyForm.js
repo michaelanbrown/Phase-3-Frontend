@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './App.css';
 
-function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
+function UpdatePropertyForm({ updateStatus, properties, setProperties, propertyData, setPropertyData }) {
     const { id } = useParams();
     const [updateProperty, setUpdateProperty] = useState({
         purchase_price: "",
@@ -34,6 +34,7 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
     }
 
     function updatePropertiesArray(updatedProperty) {
+        console.log(updatedProperty)
         const updatingProperty = properties.map((prop) => {
             if (prop.id === updatedProperty.id) {
                 return updatedProperty
@@ -42,6 +43,11 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
             }
         })
         setProperties(updatingProperty)
+        setPropertyData({...updatedProperty,
+            type: propertyData.type,
+            street_address: propertyData.street_adress,
+            city: propertyData.city,
+            state: propertyData.state})
     }
 
     function handleUpdatingProperty(e) {
@@ -60,7 +66,7 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
 
     return (updateStatus ? (
         <div>
-            <form >
+            <form onSubmit={handleUpdatingProperty}>
                 Enter Updates Here:
                 <br></br>
                 Purchase Price: <input type="text" className="recordFormElement" id="purchase_price" value={updateProperty.purchase_price} onChange={handleFormChange} placeholder="Property Management Payment"/>
@@ -73,7 +79,7 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties }) {
                 <br/>
                 Image URL: <input type="text" className="recordFormElement" id="link" value={updateProperty.link} onChange={handleFormChange} placeholder="Gross Income"/>
                 <br/>
-                <button className='submit' onSubmit={handleUpdatingProperty}>Submit Changes</button>
+                <button className='submit'>Submit Changes</button>
             </form>
         </div>) : null
     )
