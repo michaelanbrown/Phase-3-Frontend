@@ -5,7 +5,7 @@ import RecordCard from './RecordCard';
 import NewRecordForm from './NewRecordForm';
 import UpdatePropertyForm from './UpdatePropertyForm';
 
-function Property({  properties, setProperties }) {
+function Property({  properties, setProperties, end, setEnd }) {
     const [propertyData, setPropertyData] = useState({})
     const { id } = useParams();
     const [update, setUpdate] = useState("Want to Update Any Information?")
@@ -60,7 +60,7 @@ function Property({  properties, setProperties }) {
             <br/>
             <button className='submit' onClick={handleUpdateStatusClick}>{update}</button>
             <br/>
-            <UpdatePropertyForm formStatus={formStatus} setPropertyData={setPropertyData} propertyData={propertyData} updateStatus={updateStatus} setUpdateStatus={setUpdateStatus} properties={properties} setProperties={setProperties}/>
+            <UpdatePropertyForm formStatus={formStatus} setPropertyData={setPropertyData} setEnd={setEnd} end={end} propertyData={propertyData} updateStatus={updateStatus} setUpdateStatus={setUpdateStatus} properties={properties} setProperties={setProperties}/>
             <br/>
             <h3>Finance Records:</h3>
             {mappedRecords}

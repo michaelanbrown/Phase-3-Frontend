@@ -10,7 +10,7 @@ import PropertyForm from './PropertyForm';
 
 function App() {
   const [properties, setProperties] = useState([]);
-  const [records, setRecords] = useState([]);
+  const [end, setEnd] = useState(true)
 
   useEffect(() => {
     fetch("http://localhost:9292/properties")
@@ -18,7 +18,7 @@ function App() {
     .then(data => {
       setProperties(data);
     })
-  }, [])
+  }, [end])
 
   return (
     <div>
@@ -28,8 +28,8 @@ function App() {
             <Route path="/owned/*" element={<Owned setProperties={setProperties} properties={properties.filter(t => t.purchase_price !== null)}/>} />
             <Route path="/pending/*" element={<Pending setProperties={setProperties} properties={properties.filter(t => t.purchase_price === null)}/>} />
             <Route path="/new-property" element={<PropertyForm properties={properties} setProperties={setProperties} />} />
-            <Route path="/owned/:id" element={<Property properties={properties} setProperties={setProperties} />} />
-            <Route path="/pending/:id" element={<Property properties={properties} setProperties={setProperties} />} />
+            <Route path="/owned/:id" element={<Property setEnd={setEnd} end={end} properties={properties} setProperties={setProperties} />} />
+            <Route path="/pending/:id" element={<Property setEnd={setEnd} end={end}properties={properties} setProperties={setProperties} />} />
         </Routes>
     </div>
   );

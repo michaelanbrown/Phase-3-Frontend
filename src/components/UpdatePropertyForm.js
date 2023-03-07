@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './App.css';
 
-function UpdatePropertyForm({ formStatus, updateStatus, setUpdateStatus, properties, setProperties, propertyData, setPropertyData }) {
+function UpdatePropertyForm({ formStatus, updateStatus, setUpdateStatus, end, setEnd, properties, setProperties, propertyData, setPropertyData }) {
     const navigate = useNavigate();
     const { id } = useParams();
     const [updateProperty, setUpdateProperty] = useState({
@@ -65,6 +65,7 @@ function UpdatePropertyForm({ formStatus, updateStatus, setUpdateStatus, propert
         .then(r => updatePropertiesArray(r))
         .then(setUpdateStatus(!updateStatus))
         .then(formStatus())
+        .then(setEnd(!end))
         navigate(`/${updateProperty.purchase_price ? "owned" : "pending"}`)
     }
 
@@ -73,15 +74,15 @@ function UpdatePropertyForm({ formStatus, updateStatus, setUpdateStatus, propert
             <form onSubmit={handleUpdatingProperty}>
                 Enter Updates Here:
                 <br></br>
-                Purchase Price: <input type="text" className="recordFormElement" id="purchase_price" value={updateProperty.purchase_price} onChange={handleFormChange} placeholder="Property Management Payment"/>
+                Purchase Price: <input type="text" className="recordFormElement" id="purchase_price" value={updateProperty.purchase_price ? updateProperty.purchase_price : ""} onChange={handleFormChange} placeholder="Purchase Price"/>
                 <br/>
-                Square Feet: <input type="text" className="recordFormElement" id="square_feet" value={updateProperty.square_feet} onChange={handleFormChange} placeholder="Gross Income"/>
+                Square Feet: <input type="text" className="recordFormElement" id="square_feet" value={updateProperty.square_feet} onChange={handleFormChange} placeholder="Square Feet"/>
                 <br/>
-                Garage Spaces: <input type="text" className="recordFormElement" id="garage_spaces" value={updateProperty.garage_spaces} onChange={handleFormChange} placeholder="Gross Income"/>
+                Garage Spaces: <input type="text" className="recordFormElement" id="garage_spaces" value={updateProperty.garage_spaces} onChange={handleFormChange} placeholder="Garage Spaces"/>
                 <br/>
-                Flip Status: <input type="text" className="recordFormElement" id="flip_status" value={updateProperty.flip_status} onChange={handleFormChange} placeholder="Gross Income"/>
+                Flip Status: <input type="text" className="recordFormElement" id="flip_status" value={updateProperty.flip_status ? updateProperty.flip_status : ""} onChange={handleFormChange} placeholder="Flip Status"/>
                 <br/>
-                Image URL: <input type="text" className="recordFormElement" id="link" value={updateProperty.link} onChange={handleFormChange} placeholder="Gross Income"/>
+                Image URL: <input type="text" className="recordFormElement" id="link" value={updateProperty.link} onChange={handleFormChange} placeholder="Image URL"/>
                 <br/>
                 <button className='submit'>Submit Changes</button>
             </form>
