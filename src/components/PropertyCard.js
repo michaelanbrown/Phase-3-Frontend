@@ -8,8 +8,6 @@ function PropertyCard({ property, properties, setProperties }) {
     const match = property.purchase_price ? '/owned' : '/pending'
     const purchasePrice = property.purchase_price ? `$${property.purchase_price}` : "Pending Purchase"
     const garageSpaces = property.garage_spaces ? `${property.garage_spaces} garage spaces` : "No garage"
-    const propertyType = property.type.property_type ? property.type.property_type : null
-
 
     function deletion(deleted) {
         const updatedProperties = properties.filter((prop) => prop.id !== deleted.id)
@@ -45,8 +43,6 @@ function PropertyCard({ property, properties, setProperties }) {
                 {property.square_feet} sqft
                 <br/>
                 {garageSpaces}
-                <br/>
-                {propertyType}
                 <br/>
                 <button onClick={handlePropertyDelete} className="delete"><span role="img" aria-label="delete">Delete this property</span></button>
             </p>

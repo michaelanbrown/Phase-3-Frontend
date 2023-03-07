@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './App.css';
 
-function UpdatePropertyForm({ formStatus, updateStatus, setUpdateStatus, end, setEnd, properties, setProperties, propertyData, setPropertyData }) {
+function UpdatePropertyForm({ updateStatus, end, setEnd, properties, setProperties, propertyData, setPropertyData }) {
     const navigate = useNavigate();
     const { id } = useParams();
     const [updateProperty, setUpdateProperty] = useState({
@@ -63,8 +63,6 @@ function UpdatePropertyForm({ formStatus, updateStatus, setUpdateStatus, end, se
         })
         .then(r => r.json())
         .then(r => updatePropertiesArray(r))
-        .then(setUpdateStatus(!updateStatus))
-        .then(formStatus())
         .then(setEnd(!end))
         navigate(`/${updateProperty.purchase_price ? "owned" : "pending"}`)
     }

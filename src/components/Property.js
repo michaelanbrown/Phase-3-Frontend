@@ -24,17 +24,13 @@ function Property({  properties, setProperties, end, setEnd }) {
         return (<RecordCard record={rec} key={rec.id}/>)
     }) : null
 
-    function formStatus() {
+    function handleUpdateStatusClick() {
+        setUpdateStatus(updateStatus => !updateStatus)
         if (updateStatus === true) {
             setUpdate("Want to Update Any Information?")
         } else if (updateStatus === false) {
             setUpdate("Done updating information?")
         }
-    }
-
-    function handleUpdateStatusClick() {
-        setUpdateStatus(updateStatus => !updateStatus)
-        formStatus(updateStatus)
     }
 
     function addRecord(newRecord) {
@@ -60,7 +56,7 @@ function Property({  properties, setProperties, end, setEnd }) {
             <br/>
             <button className='submit' onClick={handleUpdateStatusClick}>{update}</button>
             <br/>
-            <UpdatePropertyForm formStatus={formStatus} setPropertyData={setPropertyData} setEnd={setEnd} end={end} propertyData={propertyData} updateStatus={updateStatus} setUpdateStatus={setUpdateStatus} properties={properties} setProperties={setProperties}/>
+            <UpdatePropertyForm setPropertyData={setPropertyData} setEnd={setEnd} end={end} propertyData={propertyData} updateStatus={updateStatus} setUpdateStatus={setUpdateStatus} properties={properties} setProperties={setProperties}/>
             <br/>
             <h3>Finance Records:</h3>
             {mappedRecords}
