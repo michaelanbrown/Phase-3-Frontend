@@ -1,71 +1,81 @@
-# Getting Started with Create React App
+# Michaela's Property Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Welcome Page
 
-## Available Scripts
+Welcome to Michaela's Property Management system! Here you will see all of the prperties that my partner and I currently own, as well as what we are interested in.
 
-In the project directory, you can run:
+## Owned
 
-### `npm start`
+Come here to see every place that my partner and I own!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Pending
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Come here to see every place that my partner and I are interested in!
 
-### `npm test`
+## Add a Property
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Here you are able to add a property and based on if there is a purchase price, it will either be added to the owned or pending page!
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Description
+The Navigation Bar at the top will allow you to pick between what page you would like to view! It will automatically direct you to the Welcome Page, but from there it is up to you what to see next!
+In the Owned Page, you will be able to see all properties that my partner and I own. There is also an ability to click into each property to view more details. Within the specific property's view there are a couple of forms as well!
+1. You can add a finance record to monitor finances on each property.
+2. You can update any certain information regarding the propreties, just not the address or the property type as those should not generally change!
+In the Penging Page, you will be able to see all properties that my partner and I are interested in owning. The same abilities present for the Owned Page as also present for the Pending Page!
+Lastly, there is the Add a Property Page. This page allows you to add a property!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Form Examples
 
-### `npm run eject`
+```python
+# POST Form
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    function handleNewRecord(e) {
+        e.preventDefault();
+        fetch("http://localhost:9292/records", {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(recordFormData)
+        })
+        .then(r => r.json())
+        .then(r => addRecord(r))
+        .then(setRecordFormData({
+            mortgage_payment: "",
+            hoa_payment: "",
+            property_management_payment: "",
+            gross_income: "",
+            property: recordFormData.property
+        }))
+    }
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```python
+# PATCH Form
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    function handleUpdatingProperty(e) {
+        e.preventDefault();
+        fetch(`http://localhost:9292/properties/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type" : "application/json",
+                "Accept" : "application/json"
+            },
+        body: JSON.stringify(updateProperty)
+        })
+        .then(r => r.json())
+        .then(r => updatePropertiesArray(r))
+    }
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Fork and Clone
+If you would like to clone this into your environment and make it your own, feel free to do so. This is connected to the backend data here: https://github.com/michaelanbrown/phase-3-backend.
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Suggestions are welcome.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# phase-3-frontend
+## Acknowledgment
+I do not own the photos presented.
