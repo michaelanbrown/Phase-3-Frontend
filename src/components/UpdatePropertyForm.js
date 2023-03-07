@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './App.css';
 
-function UpdatePropertyForm({ updateStatus, properties, setProperties, propertyData, setPropertyData }) {
+function UpdatePropertyForm({ formStatus, updateStatus, setUpdateStatus, properties, setProperties, propertyData, setPropertyData }) {
     const { id } = useParams();
     const [updateProperty, setUpdateProperty] = useState({
         purchase_price: "",
@@ -46,7 +46,8 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties, propertyD
             type: propertyData.type,
             street_address: propertyData.street_adress,
             city: propertyData.city,
-            state: propertyData.state})
+            state: propertyData.state,
+            records: propertyData.records})
     }
 
     function handleUpdatingProperty(e) {
@@ -61,6 +62,8 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties, propertyD
         })
         .then(r => r.json())
         .then(r => updatePropertiesArray(r))
+        .then(setUpdateStatus(!updateStatus))
+        .then(formStatus())
     }
 
     return (updateStatus ? (
