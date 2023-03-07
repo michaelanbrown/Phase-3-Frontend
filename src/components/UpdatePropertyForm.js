@@ -34,7 +34,6 @@ function UpdatePropertyForm({ updateStatus, properties, setProperties, propertyD
     }
 
     function updatePropertiesArray(updatedProperty) {
-        console.log(updatedProperty)
         const updatingProperty = properties.map((prop) => {
             if (prop.id === updatedProperty.id) {
                 return updatedProperty

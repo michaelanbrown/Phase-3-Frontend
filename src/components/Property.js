@@ -20,8 +20,6 @@ function Property({  properties, setProperties }) {
             setPropertyData(data);
         })}, [])
 
-        console.log(propertyData)
-
     const mappedRecords = propertyData.records ? propertyData.records.map(rec => {
         return (<RecordCard record={rec} key={rec.id}/>)
     }) : null
