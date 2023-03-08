@@ -56,7 +56,7 @@ function Property({  properties, setProperties, end, setEnd }) {
             <br/>
             <button className='submit' onClick={handleUpdateStatusClick}>{update}</button>
             <br/>
-            <UpdatePropertyForm setPropertyData={setPropertyData} setEnd={setEnd} end={end} propertyData={propertyData} updateStatus={updateStatus} setUpdateStatus={setUpdateStatus} properties={properties} setProperties={setProperties}/>
+            <UpdatePropertyForm handleUpdateStatusClick={handleUpdateStatusClick} setPropertyData={setPropertyData} setEnd={setEnd} end={end} propertyData={propertyData} updateStatus={updateStatus} setUpdateStatus={setUpdateStatus} properties={properties} setProperties={setProperties}/>
             <br/>
             <h3>Finance Records:</h3>
             {mappedRecords}
