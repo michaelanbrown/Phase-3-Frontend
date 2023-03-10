@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import './App.css';
 
-function NewRecordForm({ addRecord }) {
+function NewRecordForm({ recordFormData, setRecordFormData, addRecord }) {
     const { id } = useParams();
-    const [recordFormData, setRecordFormData] = useState({
-        mortgage_payment: "",
-        hoa_payment: "",
-        property_management_payment: "",
-        gross_income: "",
-        property: ""
-    });
+    // const [recordFormData, setRecordFormData] = useState({
+    //     mortgage_payment: "",
+    //     hoa_payment: "",
+    //     property_management_payment: "",
+    //     gross_income: "",
+    //     property: ""
+    // });
 
-    useEffect(() => {
-        fetch(`http://localhost:9292/properties/${id}`)
-        .then(r => r.json())
-        .then(data => {
-            setRecordFormData({...recordFormData, property : data.street_address})
-        })
-    },[id])
+    // useEffect(() => {
+    //     fetch(`http://localhost:9292/properties/${id}`)
+    //     .then(r => r.json())
+    //     .then(data => {
+    //         setRecordFormData({...recordFormData, property : data.street_address})
+    //     })
+    // },[id])
 
     function handleFormChange(e) {
         setRecordFormData({

@@ -17,6 +17,13 @@ function Property({  properties, setProperties, end, setEnd }) {
         link: "",
         flip_status: "",
     });
+    const [recordFormData, setRecordFormData] = useState({
+        mortgage_payment: "",
+        hoa_payment: "",
+        property_management_payment: "",
+        gross_income: "",
+        property: ""
+    });
 
     useEffect(() => {
         fetch(`http://localhost:9292/properties/${id}`)
@@ -30,6 +37,7 @@ function Property({  properties, setProperties, end, setEnd }) {
                 link: data.link,
                 flip_status: data.flip_status,
             })
+            setRecordFormData({...recordFormData, property : data.street_address})
         })}, [id])
 
 
@@ -74,7 +82,7 @@ function Property({  properties, setProperties, end, setEnd }) {
             <h3>Finance Records:</h3>
             {mappedRecords}
             <br/>
-            <NewRecordForm propertyData={propertyData} setPropertyData={setPropertyData} addRecord={addRecord}/>
+            <NewRecordForm recordFormData={recordFormData} setRecordFormData={setRecordFormData} propertyData={propertyData} setPropertyData={setPropertyData} addRecord={addRecord}/>
         </div>
     )
 }
