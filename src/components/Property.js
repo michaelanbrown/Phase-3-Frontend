@@ -23,15 +23,15 @@ function Property({  properties, setProperties, end, setEnd }) {
         .then(r => r.json())
         .then(data => {
             setPropertyData(data);
-        })
-        .then(r => {
             setUpdateProperty({...updateProperty,
-                purchase_price: r.purchase_price,
-                square_feet: r.square_feet,
-                garage_spaces: r.garage_spaces,
-                link: r.link,
-                flip_status: r.flip_status,
-        })})}, [id])
+                purchase_price: data.purchase_price,
+                square_feet: data.square_feet,
+                garage_spaces: data.garage_spaces,
+                link: data.link,
+                flip_status: data.flip_status,
+            })
+        })}, [id])
+
 
     const mappedRecords = propertyData.records ? propertyData.records.map(rec => {
         return (<RecordCard record={rec} key={rec.id}/>)

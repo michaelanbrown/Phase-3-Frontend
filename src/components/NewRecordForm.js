@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './App.css';
 
-function NewRecordForm({ propertyData, setPropertyData, addRecord }) {
+function NewRecordForm({ addRecord }) {
     const { id } = useParams();
     const [recordFormData, setRecordFormData] = useState({
         mortgage_payment: "",
