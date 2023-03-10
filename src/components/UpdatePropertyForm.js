@@ -1,31 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './App.css';
 
-function UpdatePropertyForm({ handleUpdateStatusClick, updateStatus, end, setEnd, properties, setProperties, propertyData, setPropertyData }) {
+function UpdatePropertyForm({ updateProperty, setUpdateProperty, handleUpdateStatusClick, updateStatus, end, setEnd, properties, setProperties, propertyData, setPropertyData }) {
     const navigate = useNavigate();
     const { id } = useParams();
-    const [updateProperty, setUpdateProperty] = useState({
-        purchase_price: "",
-        square_feet: "",
-        garage_spaces: "",
-        link: "",
-        flip_status: "",
-    });
-
-    useEffect(() => {
-        fetch(`http://localhost:9292/properties/${id}`)
-        .then(r => r.json())
-        .then(r => {
-            setUpdateProperty({...updateProperty,
-                purchase_price: r.purchase_price,
-                square_feet: r.square_feet,
-                garage_spaces: r.garage_spaces,
-                link: r.link,
-                flip_status: r.flip_status,
-        })
-        })
-    },[id])
 
     function handleFormChange(e) {
         setUpdateProperty({
